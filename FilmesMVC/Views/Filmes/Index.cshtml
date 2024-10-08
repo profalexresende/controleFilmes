@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FilmesMVC.Models.Filme>
+
+<h2>Catálogo de Filmes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Ano de Lançamento</th>
+            <th>Gênero</th>
+            <th>Diretor</th>
+            <th>Duração (min)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var filme in Model)
+        {
+            <tr>
+                <td>@filme.Titulo</td>
+                <td>@filme.AnoLancamento</td>
+                <td>@filme.Genero</td>
+                <td>@filme.Diretor</td>
+                <td>@filme.Duracao</td>
+                <td>
+                    <a href="@Url.Action("Detalhes", new { id = filme.Id })">Detalhes</a> |
+                    <a href="@Url.Action("Editar", new { id = filme.Id })">Editar</a> |
+                    <a href="@Url.Action("Excluir", new { id = filme.Id })">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Criar")" class="btn btn-primary">Adicionar Novo Filme</a>
